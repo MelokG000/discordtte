@@ -1,0 +1,1 @@
+pyinstaller tte_ui.py --onefile
