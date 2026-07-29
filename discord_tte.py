@@ -2,7 +2,7 @@
 # LICENSE: CC BY-NC-SA 4.0 (https://creativecommons.org)
 # MADE BY: Mlk
 
-LIBRARY_VERSION = "1.0.0"
+LIBRARY_VERSION = "1.0.1"
 
 emoji_letter_blank = ":regional_indicator_"
 emoji_number_blank = ":number_" #it works like that too
@@ -12,8 +12,8 @@ marks = "!?<>+-*/^#$="
 emoji_marks = {"!":":exclamation:", "?":":question:", "<":":arrow_backward:", ">":":arrow_forward:", "+":":heavy_plus_sign:", "-":":heavy_minus_sign:", "*":":heavy_multiplication_x:","/":":heavy_division_sign:","^":":arrow_up_small:", "#":":hash:", "$":":dollar:", "=":":heavy_equals_sign:"}
 numbers = "1234567890"
 markstostay = ["(", ")", "[", "]", "{", "}", ";", "'", '"', "№", "@", "&", "%", "|", ",", "."] # no ":" because it will break L76
-shorten = sorted(["id","ab","cl","sos","atm","wc","abc","ng","ok","up","cool","new","free","tm","top","soon","on","back","end","vs","o","a","b","m"], key=len, reverse=True)
-shorten_to_other = {"p": "parking", "e": "email", "i": "information", "u": "ophiuchus"}
+shorten = sorted(["id","ab","cl","sos","atm","wc","abc","ng","ok","up","cool","new","free","tm","top","soon","on","back","end","vs","o","a","b","m","c","x","r","zzz"], key=len, reverse=True)
+shorten_to_other = {"p": "parking", "e": "email", "i": "information", "u": "ophiuchus", "v": "aries", "n": "capricorn"}
 shorten_to_non_text_emoji = {"nose": "nose", "party": "partying_face"} # this can be used to convert any text into any emojis like "nose -> :nose:" or "party -> :partying_face: "
 
 def shorten_emojis(text = ":regional_indicator_p: :regional_indicator_e: :regional_indicator_e:", secret_mode = False, convert_to_non_text_emoji = False):

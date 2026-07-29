@@ -15,6 +15,7 @@ COLOR_BLUE = "\x1b[34m"
 COLOR_PURPLE = "\x1b[35m"
 COLOR_CYAN = "\x1b[36m"
 COLOR_WHITE = "\x1b[37m"
+COLOR_RED_TERMINAL = "\033[41m"
 
 cyrillic_c = "с" # for all those russians and other people with cyrillic c on the same button as latin one
 
@@ -36,7 +37,7 @@ prefix = pprefix
 toemoji = ptoemoji
 areweindiscord = pareweindiscord
 
-version = "1.0.0"
+version = "1.0.1"
 
 
 
@@ -106,7 +107,7 @@ while not we_are_shutting_down:
         case "c9":
             nontextlist = pnontextlist
             if secret:
-                print("\033[41m"+COLOR_RED+"NO!"+COLOR_RESET+f" You can't just do that! {COLOR_RED}S{COLOR_RESET}{COLOR_YELLOW}E{COLOR_RESET}{COLOR_GREEN}C{COLOR_RESET}{COLOR_CYAN}R{COLOR_RESET}{COLOR_BLUE}E{COLOR_RESET}{COLOR_PURPLE}T{COLOR_RESET} MODE IS STILL ON!")
+                print(COLOR_RED_TERMINAL+COLOR_WHITE+"NO!"+COLOR_RESET+f" You can't just do that! {COLOR_RED}S{COLOR_RESET}{COLOR_YELLOW}E{COLOR_RESET}{COLOR_GREEN}C{COLOR_RESET}{COLOR_CYAN}R{COLOR_RESET}{COLOR_BLUE}E{COLOR_RESET}{COLOR_PURPLE}T{COLOR_RESET} MODE IS STILL ON!")
             nitro = pnitro
             maxlength = pmaxlength
             shorten = pshorten
