@@ -2,6 +2,7 @@
 # LICENSE: CC BY-NC-SA 4.0 (https://creativecommons.org)
 # MADE BY: Mlk
 
+import pyfiglet
 import discord_tte
 import pyperclip
 
@@ -27,6 +28,7 @@ pshorten = True
 pprefix = "### "
 ptoemoji = False
 pareweindiscord = True
+pmenufont = "graceful"
 
 nontextlist = pnontextlist
 secret = psecret
@@ -36,22 +38,26 @@ shorten = pshorten
 prefix = pprefix
 toemoji = ptoemoji
 areweindiscord = pareweindiscord
+menufont = pmenufont
 
-version = "1.0.1"
-
-
+__version__ = "1.0.2"
 
 while not we_are_shutting_down:
-    print(r" ____  ____  _  _  ____    ____  __  ", COLOR_PURPLE, r"   ____  __  ____   ___  __  ____  ____  ", COLOR_RESET, r"  ____  _  _   __     __  __  ")
-    print(r"(_  _)(  __)( \/ )(_  _)  (_  _)/  \ ", COLOR_PURPLE, r"  (    \(  )/ ___) / __)/  \(  _ \(    \ ", COLOR_RESET, r" (  __)( \/ ) /  \  _(  )(  ) ")
-    print(r"  )(   ) _)  )  (   )(      )( (  O )", COLOR_PURPLE, r"   ) D ( )( \___ \( (__(  O ))   / ) D ( ", COLOR_RESET, r"  ) _) / \/ \(  O )/ \) \ )(  ")
-    print(r" (__) (____)(_/\_) (__)    (__) \__/ ", COLOR_PURPLE, r"  (____/(__)(____/ \___)\__/(__\_)(____/ ", COLOR_RESET, r" (____)\_)(_/ \__/ \____/(__) ")
-    print(f"UI: v{version}")
-    print(f"LIB: v{discord_tte.LIBRARY_VERSION}")
+    try:
+        text_part_1 = pyfiglet.figlet_format("TEXT TO ", font=menufont)
+        text_part_2 = COLOR_PURPLE+pyfiglet.figlet_format("DISCORD ", font=menufont)+COLOR_RESET
+        text_part_3 = pyfiglet.figlet_format("EMOJI", font=menufont)
+        for one, two, three in zip(text_part_1.split("\n"),text_part_2.split("\n"),text_part_3.split("\n")):
+            print(f"{one}{COLOR_PURPLE+two+COLOR_RESET}{three}")
+    except pyfiglet.FontNotFound:
+        print(f"TEXT TO {COLOR_PURPLE}DISCORD{COLOR_RESET} EMOJI\n")
+        print(f"{COLOR_RED}Selected font does not exist.{COLOR_RESET}\n")
+    print(f"UI: v{__version__}")
+    print(f"LIB: v{discord_tte.__version__}")
     print("")
     print(f"c1 - Toggle discord nitro (current - {COLOR_GREEN if nitro else COLOR_RED}{nitro}{COLOR_RESET})")
     print(f"c2 - Change max message length (without nitro) (current -  {COLOR_BLUE}{maxlength}{COLOR_RESET})")
-    print(f"c3 - Toggle shortening (reduced readability in exchange for longer messages) (current - {COLOR_GREEN if shorten else COLOR_RED}{shorten}{COLOR_RESET})")
+    print(f"c3 - Toggle shortening (reduced readability in exchange for increased message capacity) (current - {COLOR_GREEN if shorten else COLOR_RED}{shorten}{COLOR_RESET})")
     print(f"c4 - Change symbols before emojis (supports discord markdown) (current - {COLOR_BLUE}{prefix.strip()}{COLOR_RESET})")
     print(f"c5 - Toggle converting pieces of text to non-text emoji (current - {COLOR_GREEN if toemoji else COLOR_RED}{toemoji}{COLOR_RESET})")
     print("c6 - Add an emoji to c5")
@@ -59,6 +65,7 @@ while not we_are_shutting_down:
     print(f"c8 - Do we need to cut emojis past the limit? (current - {COLOR_GREEN if areweindiscord else COLOR_RED}{areweindiscord}{COLOR_RESET})")
     print("c9 - Reset settings")
     print("c10 - Copy test string")
+    print(f"c11 - Change menu font (current - {COLOR_BLUE+menufont+COLOR_RESET})")
     print(COLOR_RED+"c0 - Close"+COLOR_RESET)
     if secret:
         print(f"{COLOR_RED}S{COLOR_YELLOW}E{COLOR_GREEN}C{COLOR_CYAN}R{COLOR_BLUE}E{COLOR_PURPLE}T{COLOR_RESET} MODE!!!!!! Please {COLOR_RED}do not use c99 again!!!{COLOR_RESET}")
@@ -114,10 +121,13 @@ while not we_are_shutting_down:
             prefix = pprefix
             toemoji = ptoemoji
             areweindiscord = pareweindiscord
+            menufont = pmenufont
             print("Settings reset.")
         case "c10":
             pyperclip.copy(discord_tte.tte_get_test_string()) 
             print("Copied!")
+        case "c11":
+            menufont = input("New menu font (uses FIGlet fonts)? ")
         case "c99":
             secret = not secret
             if secret:

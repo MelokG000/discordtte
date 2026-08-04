@@ -1,0 +1,7 @@
+cat << 'EOF' > .gitignore
+*.spec
+__pycache__/
+build/
+dist/
+*.git
+EOF
