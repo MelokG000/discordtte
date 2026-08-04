@@ -44,11 +44,21 @@ __version__ = "1.0.2"
 
 while not we_are_shutting_down:
     try:
-        text_part_1 = pyfiglet.figlet_format("TEXT TO ", font=menufont)
-        text_part_2 = COLOR_PURPLE+pyfiglet.figlet_format("DISCORD ", font=menufont)+COLOR_RESET
-        text_part_3 = pyfiglet.figlet_format("EMOJI", font=menufont)
-        for one, two, three in zip(text_part_1.split("\n"),text_part_2.split("\n"),text_part_3.split("\n")):
-            print(f"{one}{COLOR_PURPLE+two+COLOR_RESET}{three}")
+        text_part_1 = pyfiglet.figlet_format("TEXT TO ", font=menufont).rstrip()
+        text_part_2 = pyfiglet.figlet_format("DISCORD ", font=menufont).rstrip()
+        text_part_3 = pyfiglet.figlet_format("EMOJI", font=menufont).rstrip()
+        lines1, lines2, lines3 = text_part_1.split("\n"), text_part_2.split("\n"), text_part_3.split("\n")
+        max_lines = max(len(lines1), len(lines2), len(lines3))
+        lines1 = [""]*(max_lines - len(lines1)) + lines1
+        lines2 = [""]*(max_lines - len(lines2)) + lines2
+        lines3 = [""]*(max_lines - len(lines3)) + lines3
+        width1 = max(len(line) for line in lines1)
+        width2 = max(len(line) for line in lines2)
+
+        for one, two, three in zip(lines1, lines2, lines3):
+            one = one.ljust(width1)
+            two = f"{COLOR_PURPLE}{two.ljust(width2)}{COLOR_RESET}"
+            print(f"{one}{two}{three}")
     except pyfiglet.FontNotFound:
         print(f"TEXT TO {COLOR_PURPLE}DISCORD{COLOR_RESET} EMOJI\n")
         print(f"{COLOR_RED}Selected font does not exist.{COLOR_RESET}\n")

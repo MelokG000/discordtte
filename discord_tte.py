@@ -19,6 +19,10 @@ shorten_to_non_text_emoji = {"nose": "nose", "party": "partying_face"} # this ca
 
 def shorten_emojis(text = ":regional_indicator_p: :regional_indicator_e: :regional_indicator_e:", secret_mode = False, convert_to_non_text_emoji = False):
     result_text = text
+    if secret_mode:
+            searchingfor = ":regional_indicator_m: :regional_indicator_l: :regional_indicator_k: "
+            if searchingfor in result_text:
+                result_text = result_text.replace(searchingfor, ":face_holding_back_tears: :face_holding_back_tears: :face_holding_back_tears: ")
     if convert_to_non_text_emoji:
         for replacewith in shorten_to_non_text_emoji:
             searchingfor = ""
@@ -44,10 +48,6 @@ def shorten_emojis(text = ":regional_indicator_p: :regional_indicator_e: :region
             searchingfor += f":number_{replacewith[num]}: "
         if searchingfor in result_text:
             result_text = result_text.replace(searchingfor, f":{shorten_numbers[replacewith]}: ")  
-    if secret_mode:
-        searchingfor = ":regional_indicator_m: :regional_indicator_l: :regional_indicator_k: "
-        if searchingfor in result_text:
-            result_text = result_text.replace(searchingfor, ":face_holding_back_tears: :face_holding_back_tears: :face_holding_back_tears: ")
     return result_text
 
 def letter_to_emoji(letter = "a"):
