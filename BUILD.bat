@@ -1,1 +1,1 @@
-pyinstaller tte_ui.py --onefile
+pyinstaller tte_ui.py --onefile --collect-data pyfiglet
