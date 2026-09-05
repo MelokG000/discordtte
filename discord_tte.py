@@ -5,13 +5,13 @@
 __version__ = "1.0.2"
 
 emoji_letter_blank = ":regional_indicator_"
-emoji_number_blank = ":number_" #it works like that too
+emoji_number_blank = ":number_"
 
 letters = "abcdefghijklmnopqrstuvwxyz"
 marks = "!?<>+-*/^#$="
 emoji_marks = {"!":":exclamation:", "?":":question:", "<":":arrow_backward:", ">":":arrow_forward:", "+":":heavy_plus_sign:", "-":":heavy_minus_sign:", "*":":heavy_multiplication_x:","/":":heavy_division_sign:","^":":arrow_up_small:", "#":":hash:", "$":":dollar:", "=":":heavy_equals_sign:"}
 numbers = "1234567890"
-markstostay = ["(", ")", "[", "]", "{", "}", ";", "'", '"', "№", "@", "&", "%", "|", ",", "."] # no ":" because it will break L76
+markstostay = ["(", ")", "[", "]", "{", "}", ";", "'", '"', "№", "@", "&", "%", "|", ",", "."] # no ":" because it will break things
 shorten = sorted(["id","ab","cl","sos","atm","wc","abc","ng","ok","up","cool","new","free","tm","top","soon","on","back","end","vs","o","a","b","m","c","x","zzz"], key=len, reverse=True)
 shorten_numbers = {"1234": "1234", "10": "keycap_ten"}
 shorten_to_other = {"p": "parking", "e": "email", "i": "information", "u": "ophiuchus", "v": "aries", "n": "capricorn"}
@@ -74,7 +74,7 @@ def text_to_emoji(orig = "^^^ A $quick #brownfox [jumps] OVER the lazy, lazy {do
             result += "  "
         elif letter in markstostay:
             result += letter
-        result += " " # fuck you discord and your damn flags
+        result += " " # to separate regional indicators emoji so discord does not turn them into flags
     if shorten_the_text:
         result = shorten_emojis(result, secret_mode, nontext)
     if are_we_in_discord:
